@@ -10,7 +10,7 @@ import {
   ReloadOutlined,
   DownloadOutlined,
   ExclamationCircleOutlined,
-  DatabaseOutlined,
+  AppstoreOutlined,
 } from "@ant-design/icons";
 import { useNavigate, useLocation, Outlet } from "react-router-dom";
 import dataStore from "@/store";
@@ -43,36 +43,12 @@ const AppLayout: React.FC = () => {
   const currentApp = location.pathname.slice(1) as AppType;
 
   const menuItems = [
-    {
-      key: "/network",
-      icon: <CloudServerOutlined />,
-      label: "网络大屏管理",
-    },
-    {
-      key: "/security",
-      icon: <SecurityScanOutlined />,
-      label: "安全大屏管理",
-    },
-    {
-      key: "/knowledge",
-      icon: <BookOutlined />,
-      label: "知识系统管理",
-    },
-    {
-      key: "/compute-ops",
-      icon: <ClusterOutlined />,
-      label: "算力运营管理",
-    },
-    {
-      key: "/compute-monitor",
-      icon: <MonitorOutlined />,
-      label: "算力监控管理",
-    },
-    {
-      key: "/ops",
-      icon: <SettingOutlined />,
-      label: "运维监控管理",
-    },
+    { key: "/network", icon: <CloudServerOutlined />, label: "网络大屏管理" },
+    { key: "/security", icon: <SecurityScanOutlined />, label: "安全大屏管理" },
+    { key: "/knowledge", icon: <BookOutlined />, label: "知识系统管理" },
+    { key: "/compute-ops", icon: <ClusterOutlined />, label: "算力运营管理" },
+    { key: "/compute-monitor", icon: <MonitorOutlined />, label: "算力监控管理" },
+    { key: "/ops", icon: <SettingOutlined />, label: "运维监控管理" },
   ];
 
   const handleReset = (app: AppType) => {
@@ -102,175 +78,44 @@ const AppLayout: React.FC = () => {
   };
 
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout className="app-layout">
       {contextHolder}
-      <Sider
-        width={260}
-        style={{
-          background:
-            "linear-gradient(180deg, #001529 0%, #003a70 50%, #0050a0 100%)",
-          boxShadow: "4px 0 20px rgba(0, 0, 0, 0.15)",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        {/* 顶部装饰条 */}
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            height: 4,
-            background:
-              "linear-gradient(90deg, #1890FF 0%, #40A9FF 50%, #69C0FF 100%)",
-          }}
-        />
-
-        {/* Logo 区域 */}
-        <div
-          style={{
-            height: 72,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "0 20px",
-            borderBottom: "1px solid rgba(255,255,255,0.1)",
-            position: "relative",
-          }}
-        >
-          <div
-            style={{
-              width: 42,
-              height: 42,
-              borderRadius: 10,
-              background: "linear-gradient(135deg, #1890FF 0%, #40A9FF 100%)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              boxShadow: "0 4px 12px rgba(24, 144, 255, 0.4)",
-              marginRight: 12,
-            }}
-          >
-            <DatabaseOutlined style={{ fontSize: 22, color: "#fff" }} />
-          </div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <span
-              style={{
-                color: "#fff",
-                fontSize: 18,
-                fontWeight: 700,
-                letterSpacing: 1,
-                textShadow: "0 2px 4px rgba(0,0,0,0.2)",
-              }}
-            >
-              大屏管理后台
-            </span>
-          </div>
+      <Sider className="app-layout-sider" width={260}>
+        <div className="app-logo">
+          <AppstoreOutlined className="app-logo-icon" />
+          <span className="app-logo-text">大屏管理后台</span>
         </div>
-
-        {/* 菜单区域 */}
         <Menu
+          className="app-menu"
           mode="inline"
           selectedKeys={[location.pathname]}
           items={menuItems}
           onClick={({ key }) => navigate(key)}
-          style={{
-            background: "transparent",
-            borderRight: 0,
-            marginTop: 8,
-            padding: "8px 12px",
-          }}
           theme="dark"
         />
-
-        {/* 底部版权信息 */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: 16,
-            left: 0,
-            right: 0,
-            textAlign: "center",
-            color: "rgba(255,255,255,0.4)",
-            fontSize: 11,
-          }}
-        >
-          © 2024 Enterprise Corp.
-        </div>
       </Sider>
+
       <Layout>
-        <Header
-          style={{
-            background: "#fff",
-            padding: "0 32px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
-            height: 64,
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <div
-              style={{
-                width: 4,
-                height: 24,
-                background: "linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)",
-                borderRadius: 2,
-                marginRight: 16,
-              }}
-            />
-            <span
-              style={{
-                fontSize: 20,
-                fontWeight: 600,
-                color: "#1F2937",
-                letterSpacing: 0.5,
-              }}
-            >
+        <Header className="app-header">
+          <div className="app-header-title">
+            <div className="app-header-indicator" />
+            <span className="app-header-text">
               {appLabels[currentApp] || "大屏数据管理"}数据管理
             </span>
           </div>
           <Space size={16}>
-            <Button
-              icon={<DownloadOutlined />}
-              onClick={handleExport}
-              style={{
-                background: "linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)",
-                border: "1px solid #E5E7EB",
-                fontWeight: 500,
-              }}
-            >
+            <Button icon={<DownloadOutlined />} onClick={handleExport} className="app-btn-export">
               导出全部数据
             </Button>
             <Tooltip title="重置将清除当前应用所有修改的数据">
-              <Button
-                icon={<ReloadOutlined />}
-                onClick={() => handleReset(currentApp)}
-                style={{
-                  background:
-                    "linear-gradient(135deg, #fff2f0 0%, #fff1e6 100%)",
-                  border: "1px solid #FFCCC7",
-                  color: "#FF4D4F",
-                  fontWeight: 500,
-                }}
-              >
+              <Button icon={<ReloadOutlined />} onClick={() => handleReset(currentApp)} className="app-btn-reset">
                 重置为默认
               </Button>
             </Tooltip>
           </Space>
         </Header>
-        <Content
-          style={{
-            margin: 24,
-            padding: 28,
-            background: "#F0F2F5",
-            borderRadius: 12,
-            overflow: "auto",
-            minHeight: "calc(100vh - 112px)",
-          }}
-        >
+
+        <Content className="app-content">
           <Outlet />
         </Content>
       </Layout>
