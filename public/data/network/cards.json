@@ -1,0 +1,7 @@
+[
+  { "id": "f0584e9e-e76a-55c1-cg13-4c28ec86ff1a", "title": "累计节点总收益", "app": "network" },
+  { "id": "f0584e9e-e76a-55c1-cg13-4c28ec86ff1b", "title": "用户在线与分布情况", "app": "network" },
+  { "id": "f0584e9e-e76a-55c1-cg13-4c28ec86ff1c", "title": "节点状态与网络探测", "app": "network" },
+  { "id": "f0584e9e-e76a-55c1-cg13-4c28ec86ff1d", "title": "网络互联", "app": "network" },
+  { "id": "f0584e9e-e76a-55c1-cg13-4c28ec86ff1e", "title": "计算节点资源", "app": "network" }
+]

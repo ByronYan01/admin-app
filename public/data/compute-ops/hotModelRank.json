@@ -1,0 +1,10 @@
+[
+  { "rank": 1, "modelName": "Qwen2.5-7B-Instruct" },
+  { "rank": 2, "modelName": "Qwen2.5-32B" },
+  { "rank": 3, "modelName": "MiniMax-Text-01" },
+  { "rank": 4, "modelName": "Qwen2.5-27B" },
+  { "rank": 5, "modelName": "Qwen3-Embedding-4B" },
+  { "rank": 6, "modelName": "bge-reranker-v2-m3" },
+  { "rank": 7, "modelName": "bge-m3" },
+  { "rank": 8, "modelName": "Qwen3-TTS-12Hz-0.6B-Base" }
+]

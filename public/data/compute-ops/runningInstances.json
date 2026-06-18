@@ -1,0 +1,9 @@
+[
+  { "type": "大语言模型", "count": 4 },
+  { "type": "文本嵌入", "count": 2 },
+  { "type": "文本重排", "count": 1 },
+  { "type": "语音识别", "count": 1 },
+  { "type": "语音合成", "count": 1 },
+  { "type": "视觉语言模型", "count": 2 },
+  { "type": "OpenMineru", "count": 1 }
+]

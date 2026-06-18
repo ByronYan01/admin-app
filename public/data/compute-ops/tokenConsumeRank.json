@@ -1,0 +1,7 @@
+[
+  { "rank": 1, "tenantName": "chengzhendong-default", "consume": 8500000 },
+  { "rank": 2, "tenantName": "fengvv-default", "consume": 5200000 },
+  { "rank": 3, "tenantName": "superadmin-default", "consume": 3100000 },
+  { "rank": 4, "tenantName": "tianhuiqiang-default", "consume": 1800000 },
+  { "rank": 5, "tenantName": "luopan-default", "consume": 1200000 }
+]

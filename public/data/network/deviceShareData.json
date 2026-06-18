@@ -1,0 +1,17 @@
+{
+  "totalNodes": 80,
+  "scanProgress": 100,
+  "onlineCount": 75,
+  "maintenanceCount": 3,
+  "offlineCount": 2,
+  "nodeStates": [
+    "online", "online", "online", "online", "online", "online", "online", "online", "online", "online",
+    "online", "online", "online", "online", "online", "online", "online", "maintenance", "online", "online",
+    "online", "online", "online", "online", "online", "online", "online", "online", "online", "online",
+    "online", "online", "online", "online", "online", "offline", "online", "online", "online", "online",
+    "online", "online", "online", "online", "online", "online", "online", "online", "online", "online",
+    "online", "online", "online", "online", "online", "online", "online", "online", "online", "online",
+    "online", "online", "online", "online", "online", "online", "online", "maintenance", "online", "online",
+    "offline", "online"
+  ]
+}

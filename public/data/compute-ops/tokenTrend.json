@@ -1,0 +1,9 @@
+[
+  { "date": "2026-06-11", "totalToken": 25000000, "callCount": 3500 },
+  { "date": "2026-06-12", "totalToken": 28000000, "callCount": 3800 },
+  { "date": "2026-06-13", "totalToken": 8000000, "callCount": 1200 },
+  { "date": "2026-06-14", "totalToken": 12000000, "callCount": 1800 },
+  { "date": "2026-06-15", "totalToken": 11500000, "callCount": 1700 },
+  { "date": "2026-06-16", "totalToken": 11800000, "callCount": 1750 },
+  { "date": "2026-06-17", "totalToken": 14000000, "callCount": 2100 }
+]

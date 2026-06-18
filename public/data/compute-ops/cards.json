@@ -1,0 +1,10 @@
+[
+  { "id": "c7251b6b-b43d-42f8-bfd0-1f95bf53ce1a", "title": "算力使用概览", "app": "compute-ops" },
+  { "id": "c7251b6b-b43d-42f8-bfd0-1f95bf53ce1b", "title": "实时告警情况", "app": "compute-ops" },
+  { "id": "c7251b6b-b43d-42f8-bfd0-1f95bf53ce1c", "title": "授权与模型统计", "app": "compute-ops" },
+  { "id": "c7251b6b-b43d-42f8-bfd0-1f95bf53ce1d", "title": "模型分布情况", "app": "compute-ops" },
+  { "id": "c7251b6b-b43d-42f8-bfd0-1f95bf53ce1e", "title": "今日统计", "app": "compute-ops" },
+  { "id": "c7251b6b-b43d-42f8-bfd0-1f95bf53ce1f", "title": "Token计算量趋势", "app": "compute-ops" },
+  { "id": "c7251b6b-b43d-42f8-bfd0-1f95bf53ce1g", "title": "热门模型排行", "app": "compute-ops" },
+  { "id": "c7251b6b-b43d-42f8-bfd0-1f95bf53ce1h", "title": "Token消耗排行", "app": "compute-ops" }
+]

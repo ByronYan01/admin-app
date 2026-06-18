@@ -1,0 +1,7 @@
+[
+  { "linkName": "北京-上海 专线", "latency": 28, "lossRate": 0.01 },
+  { "linkName": "北京-广州 专线", "latency": 38, "lossRate": 0.03 },
+  { "linkName": "上海-深圳 专线", "latency": 18, "lossRate": 0.0 },
+  { "linkName": "北京-成都 备线", "latency": 45, "lossRate": 0.05 },
+  { "linkName": "成都-深圳 专线", "latency": 32, "lossRate": 0.01 }
+]

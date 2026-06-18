@@ -1,0 +1,8 @@
+[
+  { "id": "b8141b5a-a32c-41f7-afc9-0f84ae42cdb1", "title": "存储状态监控", "app": "knowledge" },
+  { "id": "b8141b5a-a32c-41f7-afc9-0f84ae42cdb2", "title": "业务基础数据", "app": "knowledge" },
+  { "id": "b8141b5a-a32c-41f7-afc9-0f84ae42cdb3", "title": "每日访问趋势", "app": "knowledge" },
+  { "id": "b8141b5a-a32c-41f7-afc9-0f84ae42cdb4", "title": "应用使用Top5", "app": "knowledge" },
+  { "id": "b8141b5a-a32c-41f7-afc9-0f84ae42cdb5", "title": "提问最多人员Top5", "app": "knowledge" },
+  { "id": "b8141b5a-a32c-41f7-afc9-0f84ae42cdb6", "title": "文件使用Top5", "app": "knowledge" }
+]

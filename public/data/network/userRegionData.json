@@ -1,0 +1,7 @@
+[
+  { "province": "广东", "count": 3200, "percent": 24.9 },
+  { "province": "北京", "count": 2800, "percent": 21.8 },
+  { "province": "上海", "count": 2100, "percent": 16.3 },
+  { "province": "浙江", "count": 1800, "percent": 14.0 },
+  { "province": "四川", "count": 1100, "percent": 8.5 }
+]

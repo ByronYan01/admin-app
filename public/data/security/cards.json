@@ -1,0 +1,9 @@
+[
+  { "id": "a1595faa-f87b-66d2-dh24-5d39fd97ff2a", "title": "攻击源IP排名Top5", "app": "security" },
+  { "id": "a1595faa-f87b-66d2-dh24-5d39fd97ff2b", "title": "漏洞攻击类型分布Top5", "app": "security" },
+  { "id": "a1595faa-f87b-66d2-dh24-5d39fd97ff2c", "title": "GPU型号平均收益", "app": "security" },
+  { "id": "a1595faa-f87b-66d2-dh24-5d39fd97ff2d", "title": "安全态势感知中心", "app": "security" },
+  { "id": "a1595faa-f87b-66d2-dh24-5d39fd97ff2e", "title": "告警变化趋势分析", "app": "security" },
+  { "id": "a1595faa-f87b-66d2-dh24-5d39fd97ff2f", "title": "安全状态扫描", "app": "security" },
+  { "id": "a1595faa-f87b-66d2-dh24-5d39fd97ff2g", "title": "实时安全告警日志流", "app": "security" }
+]

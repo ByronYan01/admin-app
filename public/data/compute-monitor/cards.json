@@ -1,0 +1,9 @@
+[
+  { "id": "d8362c7c-c54e-43a9-ce01-2a06ca64df2a", "title": "GPU总算力", "app": "compute-monitor" },
+  { "id": "d8362c7c-c54e-43a9-ce01-2a06ca64df2b", "title": "资源利用率", "app": "compute-monitor" },
+  { "id": "d8362c7c-c54e-43a9-ce01-2a06ca64df2c", "title": "GPU核心利用率Top5", "app": "compute-monitor" },
+  { "id": "d8362c7c-c54e-43a9-ce01-2a06ca64df2d", "title": "显存使用率Top5", "app": "compute-monitor" },
+  { "id": "d8362c7c-c54e-43a9-ce01-2a06ca64df2e", "title": "GPU功耗Top5", "app": "compute-monitor" },
+  { "id": "d8362c7c-c54e-43a9-ce01-2a06ca64df2f", "title": "GPU温度Top5", "app": "compute-monitor" },
+  { "id": "d8362c7c-c54e-43a9-ce01-2a06ca64df2g", "title": "GPU型号分布", "app": "compute-monitor" }
+]

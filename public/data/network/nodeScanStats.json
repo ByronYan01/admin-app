@@ -1,0 +1,6 @@
+[
+  { "name": "华北数据中心", "cpu": 42, "memory": 58, "ioRate": 420 },
+  { "name": "华东数据中心", "cpu": 65, "memory": 72, "ioRate": 610 },
+  { "name": "华南数据中心", "cpu": 82, "memory": 88, "ioRate": 980 },
+  { "name": "西部云算力节点", "cpu": 28, "memory": 41, "ioRate": 150 }
+]

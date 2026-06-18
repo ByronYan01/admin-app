@@ -1,0 +1,12 @@
+[
+  { "type": "大语言模型", "count": 72 },
+  { "type": "文本嵌入", "count": 4 },
+  { "type": "文本重排", "count": 4 },
+  { "type": "代码生成", "count": 9 },
+  { "type": "语音识别", "count": 7 },
+  { "type": "语音合成", "count": 10 },
+  { "type": "视觉语言模型", "count": 55 },
+  { "type": "文生图", "count": 4 },
+  { "type": "OpenMineru", "count": 2 },
+  { "type": "YOLO", "count": 1 }
+]

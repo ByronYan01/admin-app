@@ -1,0 +1,7 @@
+[
+  { "node": "GPU2 星石/k1-50-worker13", "value": 31 },
+  { "node": "GPU3 星石/k1-50-worker13", "value": 30 },
+  { "node": "GPU0 星石/k1-50-worker13", "value": 30 },
+  { "node": "GPU2 星石/k1-50-worker14", "value": 29 },
+  { "node": "GPU1 星石/k1-50-worker13", "value": 29 }
+]

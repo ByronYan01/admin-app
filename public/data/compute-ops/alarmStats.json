@@ -1,0 +1,6 @@
+{
+  "computeAlarm": [0, 4],
+  "dispatchAlarm": [0, 0],
+  "clusterAlarm": [0, 0],
+  "nodeAlarm": [0, 0]
+}

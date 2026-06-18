@@ -1,0 +1,22 @@
+{
+  "nodes": [
+    { "id": "R1", "label": "核心路由器01", "type": "router", "status": "up" },
+    { "id": "R2", "label": "骨干交换机02", "type": "switch", "status": "up" },
+    { "id": "R3", "label": "安全防护墙集群", "type": "core", "status": "up" },
+    { "id": "R4", "label": "边缘汇聚节点", "type": "switch", "status": "up" },
+    { "id": "R5", "label": "备份路由器02", "type": "router", "status": "up" },
+    { "id": "R6", "label": "分支分发服务器", "type": "switch", "status": "up" },
+    { "id": "R7", "label": "节点监控探针A", "type": "switch", "status": "up" },
+    { "id": "R8", "label": "节点监控探针B", "type": "switch", "status": "down" }
+  ],
+  "links": [
+    { "source": "R1", "target": "R2", "bandwidth": 100, "usage": 45 },
+    { "source": "R2", "target": "R3", "bandwidth": 200, "usage": 68 },
+    { "source": "R3", "target": "R4", "bandwidth": 50, "usage": 12 },
+    { "source": "R1", "target": "R5", "bandwidth": 150, "usage": 30 },
+    { "source": "R5", "target": "R3", "bandwidth": 200, "usage": 55 },
+    { "source": "R2", "target": "R6", "bandwidth": 100, "usage": 40 },
+    { "source": "R4", "target": "R7", "bandwidth": 10, "usage": 82 },
+    { "source": "R4", "target": "R8", "bandwidth": 10, "usage": 0 }
+  ]
+}
