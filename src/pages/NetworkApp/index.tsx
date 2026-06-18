@@ -487,15 +487,35 @@ const NetworkAppPage: React.FC = () => {
     {
       key: 'cards',
       label: (
-        <span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <SettingOutlined /> 卡片标题
         </span>
       ),
       children: (
         <Card
-          title="卡片标题配置"
+          title={
+            <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div
+                style={{
+                  width: 4,
+                  height: 18,
+                  background: 'linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)',
+                  borderRadius: 2,
+                }}
+              />
+              卡片标题配置
+            </span>
+          }
           extra={
-            <Button type="primary" icon={<SaveOutlined />} onClick={() => messageApi.info('自动保存')}>
+            <Button
+              type="primary"
+              icon={<SaveOutlined />}
+              onClick={() => messageApi.info('自动保存已启用')}
+              style={{
+                background: 'linear-gradient(135deg, #1B4B89 0%, #2E75B6 100%)',
+                border: 'none',
+              }}
+            >
               自动保存
             </Button>
           }
@@ -513,6 +533,8 @@ const NetworkAppPage: React.FC = () => {
                 width: 100,
                 render: (_, record) => (
                   <Button
+                    type="primary"
+                    ghost
                     icon={<EditOutlined />}
                     onClick={() => handleEdit('card', record)}
                   >
@@ -528,15 +550,27 @@ const NetworkAppPage: React.FC = () => {
     {
       key: 'stats',
       label: (
-        <span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <DollarOutlined /> 数值配置
         </span>
       ),
       children: (
-        <Row gutter={16}>
-          <Col span={8}>
+        <Row gutter={[20, 20]}>
+          <Col xs={24} lg={8}>
             <Card
-              title="收益统计配置"
+              title={
+                <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <div
+                    style={{
+                      width: 4,
+                      height: 18,
+                      background: 'linear-gradient(180deg, #52C41A 0%, #73D13D 100%)',
+                      borderRadius: 2,
+                    }}
+                  />
+                  收益统计配置
+                </span>
+              }
               extra={
                 <Button icon={<EditOutlined />} onClick={() => handleEdit('earning', earningStats)}>
                   编辑
@@ -547,34 +581,64 @@ const NetworkAppPage: React.FC = () => {
                 title="累计总收益"
                 value={earningStats.totalEarnings}
                 suffix="元"
-                prefix={<DollarOutlined />}
+                prefix={<DollarOutlined style={{ color: '#52C41A' }} />}
+                valueStyle={{ color: '#1F2937', fontWeight: 600 }}
               />
               <Statistic title="货币单位" value={earningStats.currency} style={{ marginTop: 16 }} />
               <Statistic title="今日收益" value={earningStats.dayEarnings} suffix="元" />
             </Card>
           </Col>
-          <Col span={8}>
+          <Col xs={24} lg={8}>
             <Card
-              title="用户在线配置"
+              title={
+                <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <div
+                    style={{
+                      width: 4,
+                      height: 18,
+                      background: 'linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)',
+                      borderRadius: 2,
+                    }}
+                  />
+                  用户在线配置
+                </span>
+              }
               extra={
                 <Button icon={<EditOutlined />} onClick={() => handleEdit('online', onlineUserStats)}>
                   编辑
                 </Button>
               }
             >
-              <Statistic title="在线用户数" value={onlineUserStats.count} prefix={<UserOutlined />} />
+              <Statistic
+                title="在线用户数"
+                value={onlineUserStats.count}
+                prefix={<UserOutlined style={{ color: '#1890FF' }} />}
+                valueStyle={{ color: '#1F2937', fontWeight: 600 }}
+              />
               <Statistic
                 title="变化率"
                 value={onlineUserStats.changeRate}
                 suffix="%"
-                valueStyle={{ color: '#3f8600' }}
+                valueStyle={{ color: onlineUserStats.changeRate >= 0 ? '#52C41A' : '#FF4D4F' }}
                 style={{ marginTop: 16 }}
               />
             </Card>
           </Col>
-          <Col span={8}>
+          <Col xs={24} lg={8}>
             <Card
-              title="节点状态配置"
+              title={
+                <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <div
+                    style={{
+                      width: 4,
+                      height: 18,
+                      background: 'linear-gradient(180deg, #FAAD14 0%, #FFC53D 100%)',
+                      borderRadius: 2,
+                    }}
+                  />
+                  节点状态配置
+                </span>
+              }
               extra={
                 <Button
                   icon={<EditOutlined />}
@@ -584,16 +648,22 @@ const NetworkAppPage: React.FC = () => {
                 </Button>
               }
             >
-              <Statistic title="总节点数" value={deviceShare.totalNodes} prefix={<NodeIndexOutlined />} />
-              <div style={{ marginTop: 16 }}>
-                <Tag color="green">在线 {deviceShare.onlineCount}</Tag>
-                <Tag color="orange">维护 {deviceShare.maintenanceCount}</Tag>
-                <Tag color="red">离线 {deviceShare.offlineCount}</Tag>
+              <Statistic
+                title="总节点数"
+                value={deviceShare.totalNodes}
+                prefix={<NodeIndexOutlined style={{ color: '#FAAD14' }} />}
+                valueStyle={{ color: '#1F2937', fontWeight: 600 }}
+              />
+              <div style={{ marginTop: 16, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                <Tag color="success" style={{ borderRadius: 6 }}>在线 {deviceShare.onlineCount}</Tag>
+                <Tag color="warning" style={{ borderRadius: 6 }}>维护 {deviceShare.maintenanceCount}</Tag>
+                <Tag color="error" style={{ borderRadius: 6 }}>离线 {deviceShare.offlineCount}</Tag>
               </div>
               <Progress
                 percent={deviceShare.scanProgress}
                 style={{ marginTop: 16 }}
                 status="active"
+                strokeColor={{ '0%': '#1890FF', '100%': '#40A9FF' }}
               />
             </Card>
           </Col>
@@ -603,15 +673,35 @@ const NetworkAppPage: React.FC = () => {
     {
       key: 'region',
       label: (
-        <span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <GlobalOutlined /> 用户地区分布
         </span>
       ),
       children: (
         <Card
-          title="用户地区分布"
+          title={
+            <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div
+                style={{
+                  width: 4,
+                  height: 18,
+                  background: 'linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)',
+                  borderRadius: 2,
+                }}
+              />
+              用户地区分布
+            </span>
+          }
           extra={
-            <Button type="primary" icon={<PlusOutlined />} onClick={handleAddRegion}>
+            <Button
+              type="primary"
+              icon={<PlusOutlined />}
+              onClick={handleAddRegion}
+              style={{
+                background: 'linear-gradient(135deg, #1B4B89 0%, #2E75B6 100%)',
+                border: 'none',
+              }}
+            >
               新增地区
             </Button>
           }
@@ -623,15 +713,35 @@ const NetworkAppPage: React.FC = () => {
     {
       key: 'node',
       label: (
-        <span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <CloudServerOutlined /> 数据中心资源
         </span>
       ),
       children: (
         <Card
-          title="数据中心资源"
+          title={
+            <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div
+                style={{
+                  width: 4,
+                  height: 18,
+                  background: 'linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)',
+                  borderRadius: 2,
+                }}
+              />
+              数据中心资源
+            </span>
+          }
           extra={
-            <Button type="primary" icon={<PlusOutlined />} onClick={handleAddNode}>
+            <Button
+              type="primary"
+              icon={<PlusOutlined />}
+              onClick={handleAddNode}
+              style={{
+                background: 'linear-gradient(135deg, #1B4B89 0%, #2E75B6 100%)',
+                border: 'none',
+              }}
+            >
               新增数据中心
             </Button>
           }
@@ -643,15 +753,35 @@ const NetworkAppPage: React.FC = () => {
     {
       key: 'probe',
       label: (
-        <span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <ApiOutlined /> 网络探针
         </span>
       ),
       children: (
         <Card
-          title="网络探针"
+          title={
+            <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div
+                style={{
+                  width: 4,
+                  height: 18,
+                  background: 'linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)',
+                  borderRadius: 2,
+                }}
+              />
+              网络探针
+            </span>
+          }
           extra={
-            <Button type="primary" icon={<PlusOutlined />} onClick={handleAddProbe}>
+            <Button
+              type="primary"
+              icon={<PlusOutlined />}
+              onClick={handleAddProbe}
+              style={{
+                background: 'linear-gradient(135deg, #1B4B89 0%, #2E75B6 100%)',
+                border: 'none',
+              }}
+            >
               新增探针
             </Button>
           }
@@ -663,39 +793,73 @@ const NetworkAppPage: React.FC = () => {
     {
       key: 'topology',
       label: (
-        <span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <NodeIndexOutlined /> 网络拓扑
         </span>
       ),
       children: (
-        <Collapse defaultActiveKey={['nodes']}>
-          <Panel header="拓扑节点" key="nodes">
-            <Button
-              type="primary"
-              icon={<PlusOutlined />}
-              onClick={handleAddTopoNode}
-              style={{ marginBottom: 16 }}
+        <Card
+          title={
+            <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div
+                style={{
+                  width: 4,
+                  height: 18,
+                  background: 'linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)',
+                  borderRadius: 2,
+                }}
+              />
+              网络拓扑配置
+            </span>
+          }
+        >
+          <Collapse
+            defaultActiveKey={['nodes']}
+            style={{
+              background: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)',
+              borderRadius: 8,
+            }}
+          >
+            <Panel
+              header={<strong style={{ color: '#1B4B89' }}>拓扑节点</strong>}
+              key="nodes"
+              style={{ background: '#fff', borderRadius: 8 }}
             >
-              新增节点
-            </Button>
-            <Table
-              dataSource={topologyData.nodes}
-              rowKey="id"
-              columns={topoNodeColumns}
-              pagination={false}
-              size="small"
-            />
-          </Panel>
-          <Panel header="拓扑链路" key="links">
-            <Table
-              dataSource={topologyData.links}
-              rowKey={(r) => `${r.source}-${r.target}`}
-              columns={topoLinkColumns}
-              pagination={false}
-              size="small"
-            />
-          </Panel>
-        </Collapse>
+              <Button
+                type="primary"
+                icon={<PlusOutlined />}
+                onClick={handleAddTopoNode}
+                style={{
+                  marginBottom: 16,
+                  background: 'linear-gradient(135deg, #1B4B89 0%, #2E75B6 100%)',
+                  border: 'none',
+                }}
+              >
+                新增节点
+              </Button>
+              <Table
+                dataSource={topologyData.nodes}
+                rowKey="id"
+                columns={topoNodeColumns}
+                pagination={false}
+                size="small"
+              />
+            </Panel>
+            <Panel
+              header={<strong style={{ color: '#1B4B89' }}>拓扑链路</strong>}
+              key="links"
+              style={{ background: '#fff', borderRadius: 8 }}
+            >
+              <Table
+                dataSource={topologyData.links}
+                rowKey={(r) => `${r.source}-${r.target}`}
+                columns={topoLinkColumns}
+                pagination={false}
+                size="small"
+              />
+            </Panel>
+          </Collapse>
+        </Card>
       ),
     },
   ];

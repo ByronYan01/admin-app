@@ -282,28 +282,37 @@ const KnowledgeAppPage: React.FC = () => {
   const tabItems = [
     {
       key: 'cards',
-      label: <span><SettingOutlined /> 卡片标题</span>,
+      label: <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><SettingOutlined /> 卡片标题</span>,
       children: (
-        <Card title="卡片标题配置">
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)', borderRadius: 2 }} />
+            卡片标题配置
+          </span>
+        }>
           <Table dataSource={cards} rowKey="id" pagination={false} columns={cardColumns} />
         </Card>
       ),
     },
     {
       key: 'storage',
-      label: <span><DatabaseOutlined /> 存储状态</span>,
+      label: <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><DatabaseOutlined /> 存储状态</span>,
       children: (
-        <Card
-          title="存储状态监控"
-          extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('storage', storageStats)}>编辑</Button>}
-        >
-          <Row gutter={16}>
-            <Col span={6}><Statistic title="存储总量" value={storageStats.total} suffix="GB" /></Col>
-            <Col span={6}><Statistic title="存储使用量" value={storageStats.used} suffix="GB" /></Col>
-            <Col span={6}><Statistic title="存储剩余量" value={storageStats.free} suffix="GB" /></Col>
-            <Col span={6}>
-              <Statistic title="存储使用率" value={storageStats.usageRate} suffix="%" />
-              <Progress percent={storageStats.usageRate} size="small" style={{ marginTop: 8 }} />
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)', borderRadius: 2 }} />
+            存储状态监控
+          </span>
+        } extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('storage', storageStats)}>编辑</Button>}>
+          <Row gutter={[16, 16]}>
+            <Col xs={12} lg={6}><Statistic title="存储总量" value={storageStats.total} suffix="GB" prefix={<DatabaseOutlined style={{ color: '#1890FF' }} />}
+              valueStyle={{ color: '#1F2937', fontWeight: 600 }} /></Col>
+            <Col xs={12} lg={6}><Statistic title="存储使用量" value={storageStats.used} suffix="GB" valueStyle={{ color: '#1F2937', fontWeight: 600 }} /></Col>
+            <Col xs={12} lg={6}><Statistic title="存储剩余量" value={storageStats.free} suffix="GB" valueStyle={{ color: '#52C41A', fontWeight: 600 }} /></Col>
+            <Col xs={12} lg={6}>
+              <Statistic title="存储使用率" value={storageStats.usageRate} suffix="%" valueStyle={{ color: '#1F2937', fontWeight: 600 }} />
+              <Progress percent={storageStats.usageRate} size="small" style={{ marginTop: 8 }}
+                strokeColor={{ '0%': '#1890FF', '100%': '#40A9FF' }} />
             </Col>
           </Row>
         </Card>
@@ -311,20 +320,27 @@ const KnowledgeAppPage: React.FC = () => {
     },
     {
       key: 'business',
-      label: <span><AppstoreOutlined /> 业务数据</span>,
+      label: <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><AppstoreOutlined /> 业务数据</span>,
       children: (
-        <Card
-          title="业务基础数据统计"
-          extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('business', businessStats)}>编辑</Button>}
-        >
-          <Row gutter={16}>
-            <Col span={8}><Statistic title="应用总数" value={businessStats.appCount} prefix={<AppstoreOutlined />} /></Col>
-            <Col span={8}><Statistic title="知识库总数" value={businessStats.kbCount} /></Col>
-            <Col span={8}><Statistic title="文件总数" value={businessStats.fileCount} prefix={<FileTextOutlined />} /></Col>
-            <Col span={8}><Statistic title="对话用户总数" value={businessStats.userCount} prefix={<UserOutlined />} style={{ marginTop: 16 }} /></Col>
-            <Col span={8}><Statistic title="提问总次数" value={businessStats.questionCount} /></Col>
-            <Col span={8}>
-              <Statistic title="提问来源分布" value={`站內${businessStats.internalQuestions} / 站外${businessStats.externalQuestions}`} style={{ marginTop: 16 }} />
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #52C41A 0%, #73D13D 100%)', borderRadius: 2 }} />
+            业务基础数据统计
+          </span>
+        } extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('business', businessStats)}>编辑</Button>}>
+          <Row gutter={[16, 16]}>
+            <Col xs={12} lg={8}><Statistic title="应用总数" value={businessStats.appCount} prefix={<AppstoreOutlined style={{ color: '#1890FF' }} />}
+              valueStyle={{ color: '#1F2937', fontWeight: 600 }} /></Col>
+            <Col xs={12} lg={8}><Statistic title="知识库总数" value={businessStats.kbCount} valueStyle={{ color: '#1F2937', fontWeight: 600 }} /></Col>
+            <Col xs={12} lg={8}><Statistic title="文件总数" value={businessStats.fileCount} prefix={<FileTextOutlined style={{ color: '#FAAD14' }} />}
+              valueStyle={{ color: '#1F2937', fontWeight: 600 }} /></Col>
+            <Col xs={12} lg={8}><Statistic title="对话用户总数" value={businessStats.userCount} prefix={<UserOutlined style={{ color: '#1890FF' }} />}
+              valueStyle={{ color: '#1F2937', fontWeight: 600 }} style={{ marginTop: 16 }} /></Col>
+            <Col xs={12} lg={8}><Statistic title="提问总次数" value={businessStats.questionCount} valueStyle={{ color: '#1F2937', fontWeight: 600 }}
+              style={{ marginTop: 16 }} /></Col>
+            <Col xs={12} lg={8}>
+              <Statistic title="提问来源分布" value={`站內${businessStats.internalQuestions} / 站外${businessStats.externalQuestions}`}
+                valueStyle={{ color: '#6B7280', fontSize: 14 }} style={{ marginTop: 16 }} />
             </Col>
           </Row>
         </Card>
@@ -332,27 +348,57 @@ const KnowledgeAppPage: React.FC = () => {
     },
     {
       key: 'appRank',
-      label: <span><LineChartOutlined /> 应用使用Top5</span>,
+      label: <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><LineChartOutlined /> 应用使用Top5</span>,
       children: (
-        <Card title="应用使用Top5" extra={<Button type="primary" icon={<PlusOutlined />} onClick={handleAddApp}>新增</Button>}>
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)', borderRadius: 2 }} />
+            应用使用Top5
+          </span>
+        } extra={
+          <Button type="primary" icon={<PlusOutlined />} onClick={handleAddApp}
+            style={{ background: 'linear-gradient(135deg, #1B4B89 0%, #2E75B6 100%)', border: 'none' }}>
+            新增
+          </Button>
+        }>
           <Table dataSource={appUsageRank} rowKey="appName" pagination={false} columns={appColumns} />
         </Card>
       ),
     },
     {
       key: 'userRank',
-      label: <span><TeamOutlined /> 提问人员Top5</span>,
+      label: <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><TeamOutlined /> 提问人员Top5</span>,
       children: (
-        <Card title="提问最多人员Top5" extra={<Button type="primary" icon={<PlusOutlined />} onClick={handleAddUser}>新增</Button>}>
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)', borderRadius: 2 }} />
+            提问最多人员Top5
+          </span>
+        } extra={
+          <Button type="primary" icon={<PlusOutlined />} onClick={handleAddUser}
+            style={{ background: 'linear-gradient(135deg, #1B4B89 0%, #2E75B6 100%)', border: 'none' }}>
+            新增
+          </Button>
+        }>
           <Table dataSource={userQuestionRank} rowKey="userName" pagination={false} columns={userColumns} />
         </Card>
       ),
     },
     {
       key: 'fileRank',
-      label: <span><FileTextOutlined /> 文件使用Top5</span>,
+      label: <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><FileTextOutlined /> 文件使用Top5</span>,
       children: (
-        <Card title="文件使用Top5" extra={<Button type="primary" icon={<PlusOutlined />} onClick={handleAddFile}>新增</Button>}>
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #FAAD14 0%, #FFC53D 100%)', borderRadius: 2 }} />
+            文件使用Top5
+          </span>
+        } extra={
+          <Button type="primary" icon={<PlusOutlined />} onClick={handleAddFile}
+            style={{ background: 'linear-gradient(135deg, #1B4B89 0%, #2E75B6 100%)', border: 'none' }}>
+            新增
+          </Button>
+        }>
           <Table dataSource={fileUsageRank} rowKey="fileName" pagination={false} columns={fileColumns} />
         </Card>
       ),

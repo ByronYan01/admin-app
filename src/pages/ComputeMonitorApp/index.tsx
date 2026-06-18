@@ -69,41 +69,61 @@ const ComputeMonitorAppPage: React.FC = () => {
   const tabItems = [
     {
       key: 'stats',
-      label: <span><DashboardOutlined /> GPU指标</span>,
+      label: <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><DashboardOutlined /> GPU指标</span>,
       children: (
-        <Card title="GPU总算力" extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('gpuStats', gpuStats)}>编辑</Button>}>
-          <Row gutter={16}>
-            <Col span={8}><Statistic title="GPU总算力 (FP16)" value={gpuStats.totalPfloops} suffix="PFLOPS" /></Col>
-            <Col span={8}><Statistic title="GPU总功耗" value={gpuStats.totalPowerKw} suffix="kW" /></Col>
-            <Col span={8}><Statistic title="CPU总核数" value={gpuStats.cpuCores} suffix="核" /></Col>
-            <Col span={8}><Statistic title="GPU总卡数" value={gpuStats.gpuCards} suffix="张" style={{ marginTop: 16 }} /></Col>
-            <Col span={8}><Statistic title="显存总量" value={gpuStats.vramTotalGb} suffix="GB" style={{ marginTop: 16 }} /></Col>
-            <Col span={8}><Statistic title="内存总量" value={gpuStats.memoryTotalGb} suffix="GB" style={{ marginTop: 16 }} /></Col>
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)', borderRadius: 2 }} />
+            GPU总算力
+          </span>
+        } extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('gpuStats', gpuStats)}>编辑</Button>}>
+          <Row gutter={[16, 16]}>
+            <Col xs={12} lg={8}><Statistic title="GPU总算力 (FP16)" value={gpuStats.totalPfloops} suffix="PFLOPS"
+              prefix={<DashboardOutlined style={{ color: '#1890FF' }} />} valueStyle={{ color: '#1F2937', fontWeight: 600 }} /></Col>
+            <Col xs={12} lg={8}><Statistic title="GPU总功耗" value={gpuStats.totalPowerKw} suffix="kW"
+              prefix={<ThunderboltOutlined style={{ color: '#FAAD14' }} />} valueStyle={{ color: '#1F2937', fontWeight: 600 }} /></Col>
+            <Col xs={12} lg={8}><Statistic title="CPU总核数" value={gpuStats.cpuCores} suffix="核"
+              valueStyle={{ color: '#1F2937', fontWeight: 600 }} /></Col>
+            <Col xs={12} lg={8}><Statistic title="GPU总卡数" value={gpuStats.gpuCards} suffix="张"
+              valueStyle={{ color: '#1F2937', fontWeight: 600 }} style={{ marginTop: 16 }} /></Col>
+            <Col xs={12} lg={8}><Statistic title="显存总量" value={gpuStats.vramTotalGb} suffix="GB"
+              valueStyle={{ color: '#1F2937', fontWeight: 600 }} style={{ marginTop: 16 }} /></Col>
+            <Col xs={12} lg={8}><Statistic title="内存总量" value={gpuStats.memoryTotalGb} suffix="GB"
+              valueStyle={{ color: '#1F2937', fontWeight: 600 }} style={{ marginTop: 16 }} /></Col>
           </Row>
         </Card>
       ),
     },
     {
       key: 'utilization',
-      label: <span><PercentageOutlined /> 利用率</span>,
+      label: <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><PercentageOutlined /> 利用率</span>,
       children: (
-        <Card title="资源利用率" extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('utilization', utilization)}>编辑</Button>}>
-          <Row gutter={16}>
-            <Col span={6}>
-              <Statistic title="GPU核心利用率" value={utilization.gpuUsage} suffix="%" />
-              <Progress percent={utilization.gpuUsage} size="small" style={{ marginTop: 8 }} />
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #52C41A 0%, #73D13D 100%)', borderRadius: 2 }} />
+            资源利用率
+          </span>
+        } extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('utilization', utilization)}>编辑</Button>}>
+          <Row gutter={[16, 16]}>
+            <Col xs={12} lg={6}>
+              <Statistic title="GPU核心利用率" value={utilization.gpuUsage} suffix="%" valueStyle={{ color: '#1F2937', fontWeight: 600 }} />
+              <Progress percent={utilization.gpuUsage} size="small" style={{ marginTop: 8 }}
+                strokeColor={{ '0%': '#1890FF', '100%': '#40A9FF' }} />
             </Col>
-            <Col span={6}>
-              <Statistic title="显存利用率" value={utilization.vramUsage} suffix="%" />
-              <Progress percent={utilization.vramUsage} size="small" style={{ marginTop: 8 }} />
+            <Col xs={12} lg={6}>
+              <Statistic title="显存利用率" value={utilization.vramUsage} suffix="%" valueStyle={{ color: '#1F2937', fontWeight: 600 }} />
+              <Progress percent={utilization.vramUsage} size="small" style={{ marginTop: 8 }}
+                strokeColor={{ '0%': '#52C41A', '100%': '#73D13D' }} />
             </Col>
-            <Col span={6}>
-              <Statistic title="CPU利用率" value={utilization.cpuUsage} suffix="%" />
-              <Progress percent={utilization.cpuUsage} size="small" style={{ marginTop: 8 }} />
+            <Col xs={12} lg={6}>
+              <Statistic title="CPU利用率" value={utilization.cpuUsage} suffix="%" valueStyle={{ color: '#1F2937', fontWeight: 600 }} />
+              <Progress percent={utilization.cpuUsage} size="small" style={{ marginTop: 8 }}
+                strokeColor={{ '0%': '#FAAD14', '100%': '#FFC53D' }} />
             </Col>
-            <Col span={6}>
-              <Statistic title="内存利用率" value={utilization.memoryUsage} suffix="%" />
-              <Progress percent={utilization.memoryUsage} size="small" style={{ marginTop: 8 }} />
+            <Col xs={12} lg={6}>
+              <Statistic title="内存利用率" value={utilization.memoryUsage} suffix="%" valueStyle={{ color: '#1F2937', fontWeight: 600 }} />
+              <Progress percent={utilization.memoryUsage} size="small" style={{ marginTop: 8 }}
+                strokeColor={{ '0%': '#1890FF', '100%': '#40A9FF' }} />
             </Col>
           </Row>
         </Card>
@@ -111,28 +131,43 @@ const ComputeMonitorAppPage: React.FC = () => {
     },
     {
       key: 'gpuUsage',
-      label: <span><FireOutlined /> GPU利用率Top5</span>,
+      label: <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><FireOutlined /> GPU利用率Top5</span>,
       children: (
-        <Card title="GPU核心利用率Top5">
-          <p style={{ color: '#999' }}>Top5 排行数据（只读展示）</p>
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #FF4D4F 0%, #FF7875 100%)', borderRadius: 2 }} />
+            GPU核心利用率Top5
+          </span>
+        }>
+          <p style={{ color: '#6B7280', fontSize: 14 }}>Top5 排行数据（只读展示）</p>
         </Card>
       ),
     },
     {
       key: 'vramUsage',
-      label: <span><PercentageOutlined /> 显存使用率Top5</span>,
+      label: <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><PercentageOutlined /> 显存使用率Top5</span>,
       children: (
-        <Card title="显存使用率Top5">
-          <p style={{ color: '#999' }}>Top5 排行数据（只读展示）</p>
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)', borderRadius: 2 }} />
+            显存使用率Top5
+          </span>
+        }>
+          <p style={{ color: '#6B7280', fontSize: 14 }}>Top5 排行数据（只读展示）</p>
         </Card>
       ),
     },
     {
       key: 'power',
-      label: <span><ThunderboltOutlined /> GPU功耗Top5</span>,
+      label: <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><ThunderboltOutlined /> GPU功耗Top5</span>,
       children: (
-        <Card title="GPU功耗Top5">
-          <p style={{ color: '#999' }}>Top5 排行数据（只读展示）</p>
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #FAAD14 0%, #FFC53D 100%)', borderRadius: 2 }} />
+            GPU功耗Top5
+          </span>
+        }>
+          <p style={{ color: '#6B7280', fontSize: 14 }}>Top5 排行数据（只读展示）</p>
         </Card>
       ),
     },

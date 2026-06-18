@@ -98,30 +98,42 @@ const OpsAppPage: React.FC = () => {
   const tabItems = [
     {
       key: 'cards',
-      label: <span><SettingOutlined /> 卡片标题</span>,
+      label: <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><SettingOutlined /> 卡片标题</span>,
       children: (
-        <Card title="卡片标题配置">
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)', borderRadius: 2 }} />
+            卡片标题配置
+          </span>
+        }>
           <Table dataSource={cards} rowKey="id" pagination={false} columns={cardColumns} />
         </Card>
       ),
     },
     {
       key: 'compute',
-      label: <span><ThunderboltOutlined /> 算力指标</span>,
+      label: <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><ThunderboltOutlined /> 算力指标</span>,
       children: (
-        <Card title="算力运维核心指标" extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('opsStats', opsStats)}>编辑</Button>}>
-          <Row gutter={16}>
-            <Col span={8}>
-              <Statistic title="总算力" value={opsStats.totalCompute} />
-              <Progress percent={opsStats.computeUsageRate} size="small" style={{ marginTop: 8 }} />
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)', borderRadius: 2 }} />
+            算力运维核心指标
+          </span>
+        } extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('opsStats', opsStats)}>编辑</Button>}>
+          <Row gutter={[16, 16]}>
+            <Col xs={24} lg={8}>
+              <Statistic title="总算力" value={opsStats.totalCompute} prefix={<ThunderboltOutlined style={{ color: '#1890FF' }} />}
+                valueStyle={{ color: '#1F2937', fontWeight: 600 }} />
+              <Progress percent={opsStats.computeUsageRate} size="small" style={{ marginTop: 8 }}
+                strokeColor={{ '0%': '#1890FF', '100%': '#40A9FF' }} />
             </Col>
-            <Col span={8}>
-              <Statistic title="已使用算力" value={opsStats.usedCompute} />
-              <Statistic title="算力使用率" value={opsStats.computeUsageRate} suffix="%" valueStyle={{ color: '#52c41a' }} style={{ marginTop: 8 }} />
+            <Col xs={24} lg={8}>
+              <Statistic title="已使用算力" value={opsStats.usedCompute} valueStyle={{ color: '#1F2937', fontWeight: 600 }} />
+              <Statistic title="算力使用率" value={opsStats.computeUsageRate} suffix="%" valueStyle={{ color: '#52C41A' }} style={{ marginTop: 8 }} />
             </Col>
-            <Col span={8}>
-              <Statistic title="已售算力" value={opsStats.soldCompute} />
-              <Statistic title="算力分配率" value={opsStats.computeAllocRate} suffix="%" valueStyle={{ color: '#faad14' }} style={{ marginTop: 8 }} />
+            <Col xs={24} lg={8}>
+              <Statistic title="已售算力" value={opsStats.soldCompute} valueStyle={{ color: '#1F2937', fontWeight: 600 }} />
+              <Statistic title="算力分配率" value={opsStats.computeAllocRate} suffix="%" valueStyle={{ color: '#FAAD14' }} style={{ marginTop: 8 }} />
             </Col>
           </Row>
         </Card>
@@ -129,10 +141,16 @@ const OpsAppPage: React.FC = () => {
     },
     {
       key: 'power',
-      label: <span><ExperimentOutlined /> 能耗统计</span>,
+      label: <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><ExperimentOutlined /> 能耗统计</span>,
       children: (
-        <Card title="能耗统计" extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('powerConsume', powerConsume)}>编辑</Button>}>
-          <Statistic title="耗电量" value={powerConsume.kwh} suffix="KWh" prefix={<ExperimentOutlined />} />
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #52C41A 0%, #73D13D 100%)', borderRadius: 2 }} />
+            能耗统计
+          </span>
+        } extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('powerConsume', powerConsume)}>编辑</Button>}>
+          <Statistic title="耗电量" value={powerConsume.kwh} suffix="KWh" prefix={<ExperimentOutlined style={{ color: '#52C41A' }} />}
+            valueStyle={{ color: '#1F2937', fontWeight: 600, fontSize: 32 }} />
         </Card>
       ),
     },

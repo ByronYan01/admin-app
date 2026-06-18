@@ -282,48 +282,68 @@ const ComputeOpsAppPage: React.FC = () => {
   const tabItems = [
     {
       key: 'cards',
-      label: <span><SettingOutlined /> 卡片标题</span>,
+      label: <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><SettingOutlined /> 卡片标题</span>,
       children: (
-        <Card title="卡片标题配置">
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)', borderRadius: 2 }} />
+            卡片标题配置
+          </span>
+        }>
           <Table dataSource={cards} rowKey="id" pagination={false} columns={cardColumns} />
         </Card>
       ),
     },
     {
       key: 'overview',
-      label: <span><CloudServerOutlined /> 算力概览</span>,
+      label: <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><CloudServerOutlined /> 算力概览</span>,
       children: (
-        <Row gutter={16}>
-          <Col span={8}>
-            <Card title="主机信息" extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('hostInfo', hostInfo)}>编辑</Button>}>
-              <Statistic title="选中主机" value={hostInfo.selectedHost} />
-              <Statistic title="所属集群" value={hostInfo.cluster} style={{ marginTop: 16 }} />
+        <Row gutter={[20, 20]}>
+          <Col xs={24} lg={8}>
+            <Card title={
+              <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)', borderRadius: 2 }} />
+                主机信息
+              </span>
+            } extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('hostInfo', hostInfo)}>编辑</Button>}>
+              <Statistic title="选中主机" value={hostInfo.selectedHost} valueStyle={{ color: '#1F2937', fontWeight: 600 }} />
+              <Statistic title="所属集群" value={hostInfo.cluster} valueStyle={{ color: '#6B7280' }} style={{ marginTop: 16 }} />
             </Card>
           </Col>
-          <Col span={8}>
-            <Card title="算力使用概览" extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('computeUsage', computeUsage)}>编辑</Button>}>
-              <Progress type="circle" percent={computeUsage.usageRate} />
-              <Statistic title="已使用" value={computeUsage.used} style={{ marginTop: 16 }} />
-              <Statistic title="剩余空间" value={computeUsage.free} />
+          <Col xs={24} lg={8}>
+            <Card title={
+              <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #52C41A 0%, #73D13D 100%)', borderRadius: 2 }} />
+                算力使用概览
+              </span>
+            } extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('computeUsage', computeUsage)}>编辑</Button>}>
+              <Progress type="circle" percent={computeUsage.usageRate} strokeColor={{ '0%': '#1890FF', '100%': '#40A9FF' }} />
+              <Statistic title="已使用" value={computeUsage.used} valueStyle={{ color: '#1F2937', fontWeight: 600 }} style={{ marginTop: 16 }} />
+              <Statistic title="剩余空间" value={computeUsage.free} valueStyle={{ color: '#52C41A' }} />
             </Card>
           </Col>
-          <Col span={8}>
-            <Card title="实时告警情况" extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('alarmStats', alarmStats)}>编辑</Button>}>
-              <div style={{ marginBottom: 8 }}>
-                <Tag color="blue">算力告警</Tag>
-                <span>严重: {alarmStats.computeAlarm[0]} / 一般: {alarmStats.computeAlarm[1]}</span>
+          <Col xs={24} lg={8}>
+            <Card title={
+              <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #FF4D4F 0%, #FF7875 100%)', borderRadius: 2 }} />
+                实时告警情况
+              </span>
+            } extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('alarmStats', alarmStats)}>编辑</Button>}>
+              <div style={{ marginBottom: 12 }}>
+                <Tag color="blue" style={{ borderRadius: 6 }}>算力告警</Tag>
+                <span style={{ marginLeft: 8, color: '#1F2937' }}>严重: {alarmStats.computeAlarm[0]} / 一般: {alarmStats.computeAlarm[1]}</span>
               </div>
-              <div style={{ marginBottom: 8 }}>
-                <Tag color="green">调度告警</Tag>
-                <span>严重: {alarmStats.dispatchAlarm[0]} / 一般: {alarmStats.dispatchAlarm[1]}</span>
+              <div style={{ marginBottom: 12 }}>
+                <Tag color="success" style={{ borderRadius: 6 }}>调度告警</Tag>
+                <span style={{ marginLeft: 8, color: '#1F2937' }}>严重: {alarmStats.dispatchAlarm[0]} / 一般: {alarmStats.dispatchAlarm[1]}</span>
               </div>
-              <div style={{ marginBottom: 8 }}>
-                <Tag color="purple">集群告警</Tag>
-                <span>严重: {alarmStats.clusterAlarm[0]} / 一般: {alarmStats.clusterAlarm[1]}</span>
+              <div style={{ marginBottom: 12 }}>
+                <Tag color="purple" style={{ borderRadius: 6 }}>集群告警</Tag>
+                <span style={{ marginLeft: 8, color: '#1F2937' }}>严重: {alarmStats.clusterAlarm[0]} / 一般: {alarmStats.clusterAlarm[1]}</span>
               </div>
               <div>
-                <Tag color="orange">节点告警</Tag>
-                <span>严重: {alarmStats.nodeAlarm[0]} / 一般: {alarmStats.nodeAlarm[1]}</span>
+                <Tag color="warning" style={{ borderRadius: 6 }}>节点告警</Tag>
+                <span style={{ marginLeft: 8, color: '#1F2937' }}>严重: {alarmStats.nodeAlarm[0]} / 一般: {alarmStats.nodeAlarm[1]}</span>
               </div>
             </Card>
           </Col>
@@ -332,20 +352,28 @@ const ComputeOpsAppPage: React.FC = () => {
     },
     {
       key: 'auth',
-      label: <span><KeyOutlined /> 授权统计</span>,
+      label: <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><KeyOutlined /> 授权统计</span>,
       children: (
-        <Card title="授权与模型实例" extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('authStats', authStats)}>编辑</Button>}>
-          <Row gutter={16}>
-            <Col span={8}>
-              <Statistic title="公共授权数量" value={authStats.publicAuth} />
-              <Statistic title="已启动模型实例" value={authStats.publicInstances} style={{ marginTop: 8 }} />
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)', borderRadius: 2 }} />
+            授权与模型实例
+          </span>
+        } extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('authStats', authStats)}>编辑</Button>}>
+          <Row gutter={[16, 16]}>
+            <Col xs={24} lg={8}>
+              <Statistic title="公共授权数量" value={authStats.publicAuth} prefix={<KeyOutlined style={{ color: '#1890FF' }} />}
+                valueStyle={{ color: '#1F2937', fontWeight: 600 }} />
+              <Statistic title="已启动模型实例" value={authStats.publicInstances} valueStyle={{ color: '#52C41A' }} style={{ marginTop: 8 }} />
             </Col>
-            <Col span={8}>
-              <Statistic title="专属授权数量" value={authStats.privateAuth} />
-              <Statistic title="已启动模型实例" value={authStats.privateInstances} style={{ marginTop: 8 }} />
+            <Col xs={24} lg={8}>
+              <Statistic title="专属授权数量" value={authStats.privateAuth} prefix={<KeyOutlined style={{ color: '#FAAD14' }} />}
+                valueStyle={{ color: '#1F2937', fontWeight: 600 }} />
+              <Statistic title="已启动模型实例" value={authStats.privateInstances} valueStyle={{ color: '#52C41A' }} style={{ marginTop: 8 }} />
             </Col>
-            <Col span={8}>
-              <Statistic title="外部接入数量" value={authStats.externalAccess} />
+            <Col xs={24} lg={8}>
+              <Statistic title="外部接入数量" value={authStats.externalAccess} prefix={<ThunderboltOutlined style={{ color: '#1890FF' }} />}
+                valueStyle={{ color: '#1F2937', fontWeight: 600 }} />
             </Col>
           </Row>
         </Card>
@@ -353,44 +381,62 @@ const ComputeOpsAppPage: React.FC = () => {
     },
     {
       key: 'model',
-      label: <span><CloudServerOutlined /> 模型分布</span>,
+      label: <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><CloudServerOutlined /> 模型分布</span>,
       children: (
-        <Collapse defaultActiveKey={['distribution', 'running']}>
-          <Panel header="模型分布情况" key="distribution" extra={<Button type="primary" size="small" icon={<PlusOutlined />} onClick={handleAddModel}>新增</Button>}>
-            <Table dataSource={modelDistribution} rowKey="type" pagination={false} columns={modelColumns} size="small" />
-          </Panel>
-          <Panel header="已启动模型实例分布" key="running" extra={<Button type="primary" size="small" icon={<PlusOutlined />} onClick={handleAddInstance}>新增</Button>}>
-            <Table dataSource={runningInstances} rowKey="type" pagination={false} columns={instanceColumns} size="small" />
-          </Panel>
-        </Collapse>
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)', borderRadius: 2 }} />
+            模型分布配置
+          </span>
+        }>
+          <Collapse defaultActiveKey={['distribution', 'running']} style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)', borderRadius: 8 }}>
+            <Panel header={<strong style={{ color: '#1B4B89' }}>模型分布情况</strong>} key="distribution"
+              extra={<Button type="primary" size="small" icon={<PlusOutlined />} onClick={handleAddModel}
+                style={{ background: 'linear-gradient(135deg, #1B4B89 0%, #2E75B6 100%)', border: 'none' }}>新增</Button>}
+              style={{ background: '#fff', borderRadius: 8 }}>
+              <Table dataSource={modelDistribution} rowKey="type" pagination={false} columns={modelColumns} size="small" />
+            </Panel>
+            <Panel header={<strong style={{ color: '#1B4B89' }}>已启动模型实例分布</strong>} key="running"
+              extra={<Button type="primary" size="small" icon={<PlusOutlined />} onClick={handleAddInstance}
+                style={{ background: 'linear-gradient(135deg, #1B4B89 0%, #2E75B6 100%)', border: 'none' }}>新增</Button>}
+              style={{ background: '#fff', borderRadius: 8 }}>
+              <Table dataSource={runningInstances} rowKey="type" pagination={false} columns={instanceColumns} size="small" />
+            </Panel>
+          </Collapse>
+        </Card>
       ),
     },
     {
       key: 'token',
-      label: <span><ThunderboltOutlined /> Token统计</span>,
+      label: <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><ThunderboltOutlined /> Token统计</span>,
       children: (
-        <Row gutter={16}>
-          <Col span={12}>
-            <Card title="今日统计" extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('tokenStats', tokenStats)}>编辑</Button>}>
-              <Statistic title="今日总Token数" value={tokenStats.todayTotal} />
-              <Statistic title="VS 昨日" value={tokenStats.todayTotal - tokenStats.yesterdayTotal} valueStyle={{ color: '#52c41a' }} style={{ marginTop: 8 }} />
-              <Statistic title="今日总调用次数" value={tokenStats.todayCalls} style={{ marginTop: 16 }} />
-              <Statistic title="VS 昨日" value={tokenStats.todayCalls - tokenStats.yesterdayCalls} valueStyle={{ color: '#52c41a' }} style={{ marginTop: 8 }} />
+        <Row gutter={[20, 20]}>
+          <Col xs={24} lg={12}>
+            <Card title={
+              <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #52C41A 0%, #73D13D 100%)', borderRadius: 2 }} />
+                今日统计
+              </span>
+            } extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('tokenStats', tokenStats)}>编辑</Button>}>
+              <Statistic title="今日总Token数" value={tokenStats.todayTotal} prefix={<ThunderboltOutlined style={{ color: '#52C41A' }} />}
+                valueStyle={{ color: '#1F2937', fontWeight: 600 }} />
+              <Statistic title="VS 昨日" value={tokenStats.todayTotal - tokenStats.yesterdayTotal} valueStyle={{ color: '#52C41A' }} style={{ marginTop: 8 }} />
+              <Statistic title="今日总调用次数" value={tokenStats.todayCalls} valueStyle={{ color: '#1F2937', fontWeight: 600 }} style={{ marginTop: 16 }} />
+              <Statistic title="VS 昨日" value={tokenStats.todayCalls - tokenStats.yesterdayCalls} valueStyle={{ color: '#52C41A' }} style={{ marginTop: 8 }} />
             </Card>
           </Col>
-          <Col span={12}>
-            <Card title="Token消耗排行">
-              <Table
-                dataSource={tokenConsumeRank}
-                rowKey="rank"
-                pagination={false}
-                columns={[
-                  { title: '排名', dataIndex: 'rank', width: 80 },
-                  { title: '租户', dataIndex: 'tenantName', width: 200 },
-                  { title: '消耗Token', dataIndex: 'consume', render: (v: number) => v.toLocaleString() },
-                ]}
-                size="small"
-              />
+          <Col xs={24} lg={12}>
+            <Card title={
+              <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #FAAD14 0%, #FFC53D 100%)', borderRadius: 2 }} />
+                Token消耗排行
+              </span>
+            }>
+              <Table dataSource={tokenConsumeRank} rowKey="rank" pagination={false} columns={[
+                { title: '排名', dataIndex: 'rank', width: 80 },
+                { title: '租户', dataIndex: 'tenantName', width: 200 },
+                { title: '消耗Token', dataIndex: 'consume', render: (v: number) => v.toLocaleString() },
+              ]} size="small" />
             </Card>
           </Col>
         </Row>
@@ -398,36 +444,36 @@ const ComputeOpsAppPage: React.FC = () => {
     },
     {
       key: 'trend',
-      label: <span><LineChartOutlined /> Token趋势</span>,
+      label: <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><LineChartOutlined /> Token趋势</span>,
       children: (
-        <Card title="近7日Token计算量趋势">
-          <Table
-            dataSource={tokenTrend}
-            rowKey="date"
-            pagination={false}
-            columns={[
-              { title: '日期', dataIndex: 'date', width: 150 },
-              { title: '总Token数', dataIndex: 'totalToken', render: (v: number) => v.toLocaleString() },
-              { title: '调用次数', dataIndex: 'callCount', render: (v: number) => v.toLocaleString() },
-            ]}
-          />
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)', borderRadius: 2 }} />
+            近7日Token计算量趋势
+          </span>
+        }>
+          <Table dataSource={tokenTrend} rowKey="date" pagination={false} columns={[
+            { title: '日期', dataIndex: 'date', width: 150 },
+            { title: '总Token数', dataIndex: 'totalToken', render: (v: number) => v.toLocaleString() },
+            { title: '调用次数', dataIndex: 'callCount', render: (v: number) => v.toLocaleString() },
+          ]} />
         </Card>
       ),
     },
     {
       key: 'hotModel',
-      label: <span><TrophyOutlined /> 热门模型</span>,
+      label: <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><TrophyOutlined /> 热门模型</span>,
       children: (
-        <Card title="热门模型排行">
-          <Table
-            dataSource={hotModelRank}
-            rowKey="rank"
-            pagination={false}
-            columns={[
-              { title: '排名', dataIndex: 'rank', width: 80 },
-              { title: '模型名称', dataIndex: 'modelName' },
-            ]}
-          />
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #FAAD14 0%, #FFC53D 100%)', borderRadius: 2 }} />
+            热门模型排行
+          </span>
+        }>
+          <Table dataSource={hotModelRank} rowKey="rank" pagination={false} columns={[
+            { title: '排名', dataIndex: 'rank', width: 80 },
+            { title: '模型名称', dataIndex: 'modelName' },
+          ]} />
         </Card>
       ),
     },

@@ -447,128 +447,83 @@ const SecurityAppPage: React.FC = () => {
     {
       key: 'cards',
       label: (
-        <span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <SettingOutlined /> 卡片标题
         </span>
       ),
       children: (
         <Card
-          title="卡片标题配置"
+          title={
+            <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)', borderRadius: 2 }} />
+              卡片标题配置
+            </span>
+          }
           extra={
-            <Button type="primary" icon={<SaveOutlined />} onClick={() => messageApi.info('自动保存')}>
+            <Button type="primary" icon={<SaveOutlined />} onClick={() => messageApi.info('自动保存已启用')}
+              style={{ background: 'linear-gradient(135deg, #1B4B89 0%, #2E75B6 100%)', border: 'none' }}>
               自动保存
             </Button>
           }
         >
-          <Table
-            dataSource={cards}
-            rowKey="id"
-            pagination={false}
-            columns={[
-              { title: 'ID', dataIndex: 'id', key: 'id', width: 320 },
-              { title: '标题', dataIndex: 'title', key: 'title' },
-              {
-                title: '操作',
-                key: 'action',
-                width: 100,
-                render: (_, record) => (
-                  <Button icon={<EditOutlined />} onClick={() => handleEdit('card', record)}>
-                    编辑
-                  </Button>
-                ),
-              },
-            ]}
-          />
+          <Table dataSource={cards} rowKey="id" pagination={false} columns={[
+            { title: 'ID', dataIndex: 'id', key: 'id', width: 320 },
+            { title: '标题', dataIndex: 'title', key: 'title' },
+            { title: '操作', key: 'action', width: 100, render: (_, record) => (
+              <Button type="primary" ghost icon={<EditOutlined />} onClick={() => handleEdit('card', record)}>编辑</Button>
+            ) },
+          ]} />
         </Card>
       ),
     },
     {
       key: 'status',
       label: (
-        <span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <SecurityScanOutlined /> 安全状态
         </span>
       ),
       children: (
-        <Row gutter={16}>
-          <Col span={8}>
-            <Card
-              title="安全态势配置"
-              extra={
-                <Button
-                  icon={<EditOutlined />}
-                  onClick={() => handleEdit('securityStatus', securityStatus)}
-                >
-                  编辑
-                </Button>
-              }
-            >
-              <Statistic
-                title="安全评分"
-                value={securityStatus.score}
-                suffix="/100"
-                prefix={<RadarChartOutlined />}
-                valueStyle={{ color: securityStatus.score >= 90 ? '#52c41a' : '#faad14' }}
-              />
-              <Statistic
-                title="状态描述"
-                value={securityStatus.statusText}
-                style={{ marginTop: 16 }}
-              />
-              <Statistic
-                title="今日攻击"
-                value={securityStatus.todayAttacks}
-                suffix="次"
-                prefix={<AlertOutlined />}
-                valueStyle={{ color: '#f5222d' }}
-                style={{ marginTop: 16 }}
-              />
+        <Row gutter={[20, 20]}>
+          <Col xs={24} lg={8}>
+            <Card title={
+              <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #FF4D4F 0%, #FF7875 100%)', borderRadius: 2 }} />
+                安全态势配置
+              </span>
+            } extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('securityStatus', securityStatus)}>编辑</Button>}>
+              <Statistic title="安全评分" value={securityStatus.score} suffix="/100" prefix={<RadarChartOutlined style={{ color: '#1890FF' }} />}
+                valueStyle={{ color: '#1F2937', fontWeight: 600 }} />
+              <Statistic title="状态描述" value={securityStatus.statusText} style={{ marginTop: 16 }} />
+              <Statistic title="今日攻击" value={securityStatus.todayAttacks} suffix="次" prefix={<AlertOutlined />}
+                valueStyle={{ color: '#FF4D4F', fontWeight: 600 }} style={{ marginTop: 16 }} />
             </Card>
           </Col>
-          <Col span={8}>
-            <Card
-              title="安全维度评分"
-              extra={
-                <Button icon={<EditOutlined />} onClick={() => messageApi.info('点击行编辑')}>
-                  点击行编辑
-                </Button>
-              }
-            >
-              <Table
-                dataSource={radarDimensions}
-                rowKey="name"
-                columns={radarColumns}
-                pagination={false}
-                size="small"
-              />
+          <Col xs={24} lg={8}>
+            <Card title={
+              <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #1890FF 0%, #40A9FF 100%)', borderRadius: 2 }} />
+                安全维度评分
+              </span>
+            } extra={<Button icon={<EditOutlined />}>点击行编辑</Button>}>
+              <Table dataSource={radarDimensions} rowKey="name" columns={radarColumns} pagination={false} size="small" />
             </Card>
           </Col>
-          <Col span={8}>
-            <Card
-              title="扫描状态配置"
-              extra={
-                <Button
-                  icon={<EditOutlined />}
-                  onClick={() => handleEdit('scanStats', securityScanStats)}
-                >
-                  编辑
-                </Button>
-              }
-            >
-              <Statistic
-                title="已扫描节点"
-                value={securityScanStats.totalNodesScanned}
-                prefix={<SecurityScanOutlined />}
-              />
-              <Progress
-                percent={securityScanStats.scanProgress}
-                status="active"
-                style={{ marginTop: 16 }}
-              />
-              <div style={{ marginTop: 16 }}>
-                <Tag color="green">通过 {securityScanStats.passedCount}</Tag>
-                <Tag color="orange">警告 {securityScanStats.vulnWarningCount}</Tag>
-                <Tag color="red">高危 {securityScanStats.highRiskCount}</Tag>
+          <Col xs={24} lg={8}>
+            <Card title={
+              <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #52C41A 0%, #73D13D 100%)', borderRadius: 2 }} />
+                扫描状态配置
+              </span>
+            } extra={<Button icon={<EditOutlined />} onClick={() => handleEdit('scanStats', securityScanStats)}>编辑</Button>}>
+              <Statistic title="已扫描节点" value={securityScanStats.totalNodesScanned} prefix={<SecurityScanOutlined style={{ color: '#52C41A' }} />}
+                valueStyle={{ color: '#1F2937', fontWeight: 600 }} />
+              <Progress percent={securityScanStats.scanProgress} status="active" style={{ marginTop: 16 }}
+                strokeColor={{ '0%': '#1890FF', '100%': '#40A9FF' }} />
+              <div style={{ marginTop: 16, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                <Tag color="success" style={{ borderRadius: 6 }}>通过 {securityScanStats.passedCount}</Tag>
+                <Tag color="warning" style={{ borderRadius: 6 }}>警告 {securityScanStats.vulnWarningCount}</Tag>
+                <Tag color="error" style={{ borderRadius: 6 }}>高危 {securityScanStats.highRiskCount}</Tag>
               </div>
             </Card>
           </Col>
@@ -578,73 +533,75 @@ const SecurityAppPage: React.FC = () => {
     {
       key: 'attack',
       label: (
-        <span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <BugOutlined /> 攻击数据
         </span>
       ),
       children: (
-        <Collapse defaultActiveKey={['ipRank', 'vulnType']}>
-          <Panel header="攻击源IP排名" key="ipRank">
-            <Button
-              type="primary"
-              icon={<PlusOutlined />}
-              onClick={handleAddIp}
-              style={{ marginBottom: 16 }}
-            >
-              新增IP
-            </Button>
-            <Table dataSource={attackIpRank} rowKey="ip" columns={ipColumns} pagination={false} />
-          </Panel>
-          <Panel header="漏洞攻击类型分布" key="vulnType">
-            <Button
-              type="primary"
-              icon={<PlusOutlined />}
-              onClick={handleAddVuln}
-              style={{ marginBottom: 16 }}
-            >
-              新增类型
-            </Button>
-            <Table dataSource={vulnType} rowKey="type" columns={vulnColumns} pagination={false} />
-          </Panel>
-        </Collapse>
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #FF4D4F 0%, #FF7875 100%)', borderRadius: 2 }} />
+            攻击数据分析
+          </span>
+        }>
+          <Collapse defaultActiveKey={['ipRank', 'vulnType']} style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)', borderRadius: 8 }}>
+            <Panel header={<strong style={{ color: '#1B4B89' }}>攻击源IP排名</strong>} key="ipRank" style={{ background: '#fff', borderRadius: 8 }}>
+              <Button type="primary" icon={<PlusOutlined />} onClick={handleAddIp}
+                style={{ marginBottom: 16, background: 'linear-gradient(135deg, #1B4B89 0%, #2E75B6 100%)', border: 'none' }}>
+                新增IP
+              </Button>
+              <Table dataSource={attackIpRank} rowKey="ip" columns={ipColumns} pagination={false} />
+            </Panel>
+            <Panel header={<strong style={{ color: '#1B4B89' }}>漏洞攻击类型分布</strong>} key="vulnType" style={{ background: '#fff', borderRadius: 8 }}>
+              <Button type="primary" icon={<PlusOutlined />} onClick={handleAddVuln}
+                style={{ marginBottom: 16, background: 'linear-gradient(135deg, #1B4B89 0%, #2E75B6 100%)', border: 'none' }}>
+                新增类型
+              </Button>
+              <Table dataSource={vulnType} rowKey="type" columns={vulnColumns} pagination={false} />
+            </Panel>
+          </Collapse>
+        </Card>
       ),
     },
     {
       key: 'gpu',
       label: (
-        <span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <DollarOutlined /> GPU收益
         </span>
       ),
       children: (
-        <Card
-          title="GPU型号平均收益"
-          extra={
-            <Button type="primary" icon={<PlusOutlined />} onClick={handleAddGpu}>
-              新增型号
-            </Button>
-          }
-        >
-          <Table
-            dataSource={gpuModelEarnings}
-            rowKey="modelName"
-            columns={gpuColumns}
-            pagination={false}
-          />
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #52C41A 0%, #73D13D 100%)', borderRadius: 2 }} />
+            GPU型号平均收益
+          </span>
+        } extra={
+          <Button type="primary" icon={<PlusOutlined />} onClick={handleAddGpu}
+            style={{ background: 'linear-gradient(135deg, #1B4B89 0%, #2E75B6 100%)', border: 'none' }}>
+            新增型号
+          </Button>
+        }>
+          <Table dataSource={gpuModelEarnings} rowKey="modelName" columns={gpuColumns} pagination={false} />
         </Card>
       ),
     },
     {
       key: 'alarm',
       label: (
-        <span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <AlertOutlined /> 告警趋势
         </span>
       ),
       children: (
-        <Card title="告警变化趋势">
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #FAAD14 0%, #FFC53D 100%)', borderRadius: 2 }} />
+            告警变化趋势
+          </span>
+        }>
           <Table dataSource={alarmTrend} rowKey="time" columns={alarmColumns} pagination={false} />
-          <div style={{ marginTop: 16, color: '#999' }}>
+          <div style={{ marginTop: 16, color: '#6B7280', fontSize: 13 }}>
             提示：告警趋势数据为时间序列，建议直接在表格中编辑各时间点的告警数量
           </div>
         </Card>
@@ -653,26 +610,23 @@ const SecurityAppPage: React.FC = () => {
     {
       key: 'logs',
       label: (
-        <span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <HistoryOutlined /> 攻击日志
         </span>
       ),
       children: (
-        <Card
-          title="实时安全告警日志流"
-          extra={
-            <Button type="primary" icon={<PlusOutlined />} onClick={handleAddLog}>
-              新增日志
-            </Button>
-          }
-        >
-          <Table
-            dataSource={attackLogs}
-            rowKey="id"
-            columns={logColumns}
-            pagination={false}
-            size="small"
-          />
+        <Card title={
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ width: 4, height: 18, background: 'linear-gradient(180deg, #FF4D4F 0%, #FF7875 100%)', borderRadius: 2 }} />
+            实时安全告警日志流
+          </span>
+        } extra={
+          <Button type="primary" icon={<PlusOutlined />} onClick={handleAddLog}
+            style={{ background: 'linear-gradient(135deg, #1B4B89 0%, #2E75B6 100%)', border: 'none' }}>
+            新增日志
+          </Button>
+        }>
+          <Table dataSource={attackLogs} rowKey="id" columns={logColumns} pagination={false} size="small" />
         </Card>
       ),
     },
